@@ -1,1 +1,17 @@
+<h1>{{ title | uppercase }}</h1>
+
 <p>Hola mundo</p>
+
+<p>El doble de 3 es: {{ doubleNumber(3) }}</p>
+
+<h2>Movies</h2>
+
+<ul>
+  <li *ngFor="let movie of movies" class="movie-container">
+    <p>Title: {{ movie.title }}</p>
+
+    <p>Launch date: {{ movie.launchDate | date:"dd-MMMM-yyyy" | uppercase }}</p>
+
+    <p>Price: {{ movie.price | currency }}</p>
+  </li>
+</ul>
