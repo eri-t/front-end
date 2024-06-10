@@ -1,0 +1,29 @@
+.movie-container {
+  margin-top: 2rem;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+p {
+  margin: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.center {
+  justify-content: center;
+}
+
+.loader {
+  max-width: 30px;
+}
+
+.red {
+  color: red
+}
+
+.remove-btn {
+  margin-left: auto;
+}

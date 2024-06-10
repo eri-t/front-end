@@ -1,17 +1,14 @@
 <h1>{{ title | uppercase }}</h1>
 
-<p>Hola mundo</p>
+<p>Hello world</p>
 
-<p>El doble de 3 es: {{ doubleNumber(3) }}</p>
+<p>Two times 3 is: {{ doubleNumber(3) }}</p>
 
-<h2>Movies</h2>
+<h2>On cinemas</h2>
+<app-movies-list [movies]="showingMovies"></app-movies-list>
 
-<ul>
-  <li *ngFor="let movie of movies" class="movie-container">
-    <p>Title: {{ movie.title }}</p>
+<h2>Next releases</h2>
+<app-movies-list [movies]="nextMovies"></app-movies-list>
 
-    <p>Launch date: {{ movie.launchDate | date:"dd-MMMM-yyyy" | uppercase }}</p>
-
-    <p>Price: {{ movie.price | currency }}</p>
-  </li>
-</ul>
+<input type="file" style="display: none;" #upload>
+<button (click)="upload.click()">Upload file</button>
