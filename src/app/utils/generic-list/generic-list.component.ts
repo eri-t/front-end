@@ -7,9 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GenericListComponent implements OnInit {
 
-  ngOnInit(): void {
-    console.log(this.list);
-  }
+  ngOnInit(): void { }
 
   @Input()
   list;

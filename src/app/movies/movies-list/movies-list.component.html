@@ -6,7 +6,7 @@
     <ul>
       <li *ngFor="let movie of movies; let index = index" class="movie-container">
         <div class="d-flex">
-          <p>Title {{ index }}: {{ movie.title }}</p>
+          <p class="red">Title {{ index }}: {{ movie.title }}</p>
           <button (click)="remove(index)" class="remove-btn">Remove</button>
         </div>
         <p>Launch date: {{ movie.launchDate | date:"dd-MMMM-yyyy" | uppercase }}</p>

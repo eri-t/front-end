@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
         }
       ];
       this.nextMovies = [
-        /*
         {
           title: 'Spider-Man Far from home',
           launchDate: new Date("2024-12-24"),
@@ -37,15 +36,19 @@ export class AppComponent implements OnInit {
           launchDate: new Date("2025-7-12"),
           price: 1700.99
         }
-          */
       ]
     }, 3000);
   }
   title = 'front-end';
   showingMovies;
   nextMovies;
+  hide = false;
 
   doubleNumber(value:number):number {
     return value*2
+  }
+
+  handleRating(rating: number): void {
+    alert(rating)
   }
 }

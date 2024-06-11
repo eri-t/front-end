@@ -1,14 +1,33 @@
-<h1>{{ title | uppercase }}</h1>
+<app-navbar></app-navbar>
 
-<p>Hello world</p>
+<div class="container">
+  <h1>{{ title | uppercase }}</h1>
 
-<p>Two times 3 is: {{ doubleNumber(3) }}</p>
+  <p class="red">Hello world</p>
 
-<input type="file" style="display: none;" #upload>
-<button (click)="upload.click()">Upload file</button>
+  <p>Two times 3 is: {{ doubleNumber(3) }}</p>
 
-<h2>On cinemas</h2>
-<app-movies-list [movies]="showingMovies"></app-movies-list>
+  <!--
+      <div class="p-bottom-1">
+        <input type="text" (input)="title = $event.target.value">
+      </div>
+      
+      <div>
+        <input type="checkbox" name="" id="" (change)="hide = !hide"> Hide
+      </div>
+      
+      <app-life-cycle *ngIf="!hide" class="p-bottom-1" [text]="title"></app-life-cycle>
+      -->
+  <app-rating class="p-bottom-1" (rated)="handleRating($event)"></app-rating>
+  
+  <div class="p-bottom-1">
+    <input type="file" style="display: none;" #upload>
+    <button (click)="upload.click()">Upload file</button>
+  </div>
 
-<h2>Next releases</h2>
-<app-movies-list [movies]="nextMovies"></app-movies-list>
+  <h2>On cinemas</h2>
+  <app-movies-list [movies]="showingMovies"></app-movies-list>
+
+  <h2>Next releases</h2>
+  <app-movies-list [movies]="nextMovies"></app-movies-list>
+  </div>
