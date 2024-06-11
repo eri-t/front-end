@@ -1,18 +1,17 @@
-<div *ngIf="!movies" class="d-flex center">
-  <img src="../assets/loader.webp" alt="" class="loader">
-</div>
-
-<p *ngIf="movies?.length === 0" class="red">There are no movies to display.</p>
-
-<ng-container *ngIf="movies?.length">
-  <ul>
-    <li *ngFor="let movie of movies; let index = index" class="movie-container">
-      <div class="d-flex">
-        <p>Title {{ index }}: {{ movie.title }}</p>
-        <button (click)="remove(index)" class="remove-btn">Remove</button>
-      </div>
-      <p>Launch date: {{ movie.launchDate | date:"dd-MMMM-yyyy" | uppercase }}</p>
-      <p>Price: {{ movie.price | currency }}</p>
-    </li>
-  </ul>
-</ng-container>
+<app-generic-list [list]="movies">
+  <ng-container empty>
+    <p>There are no <span class="red">movies</span> to display.</p>
+  </ng-container>
+  <ng-container content>
+    <ul>
+      <li *ngFor="let movie of movies; let index = index" class="movie-container">
+        <div class="d-flex">
+          <p>Title {{ index }}: {{ movie.title }}</p>
+          <button (click)="remove(index)" class="remove-btn">Remove</button>
+        </div>
+        <p>Launch date: {{ movie.launchDate | date:"dd-MMMM-yyyy" | uppercase }}</p>
+        <p>Price: {{ movie.price | currency }}</p>
+      </li>
+    </ul>
+  </ng-container>
+</app-generic-list>

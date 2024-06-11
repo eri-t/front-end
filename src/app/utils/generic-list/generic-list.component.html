@@ -1,0 +1,14 @@
+<div *ngIf="!list" class="d-flex center">
+  <img src="../../../assets/loader.webp" alt="" class="loader">
+</div>
+
+<div *ngIf="list?.length === 0">
+  <p #empty><ng-content select="[empty]"></ng-content></p>
+
+  <p *ngIf="!empty.innerHTML.trim()" class="red">There are no elements to display.</p>
+</div>
+
+
+<ng-container *ngIf="list && list.length > 0">
+  <ng-content select="[content]"></ng-content>
+</ng-container>

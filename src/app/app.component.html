@@ -4,11 +4,11 @@
 
 <p>Two times 3 is: {{ doubleNumber(3) }}</p>
 
+<input type="file" style="display: none;" #upload>
+<button (click)="upload.click()">Upload file</button>
+
 <h2>On cinemas</h2>
 <app-movies-list [movies]="showingMovies"></app-movies-list>
 
 <h2>Next releases</h2>
 <app-movies-list [movies]="nextMovies"></app-movies-list>
-
-<input type="file" style="display: none;" #upload>
-<button (click)="upload.click()">Upload file</button>

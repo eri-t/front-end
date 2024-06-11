@@ -19,12 +19,13 @@ export class AppComponent implements OnInit {
           launchDate: new Date("2016-11-14"),
           price: 1230.99
         }
-      ],
-        this.nextMovies = [
-          {
-            title: 'Spider-Man Far from home',
-            launchDate: new Date("2024-12-24"),
-            price: 1900.99
+      ];
+      this.nextMovies = [
+        /*
+        {
+          title: 'Spider-Man Far from home',
+          launchDate: new Date("2024-12-24"),
+          price: 1900.99
         },
         {
           title: 'Inception',
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
           launchDate: new Date("2025-7-12"),
           price: 1700.99
         }
+          */
       ]
     }, 3000);
   }
