@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,10 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RatingComponent } from './utils/rating/rating.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+// import { SimpleCardComponent } from './components/simple-card/simple-card.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BaseUrlInterceptor } from './app.service';
+import { environment } from 'src/environments/environment.development';
 
 @NgModule({
   declarations: [
@@ -18,15 +23,26 @@ import { LifeCycleComponent } from './life-cycle/life-cycle.component';
     GenericListComponent,
     NavbarComponent,
     RatingComponent,
-    LifeCycleComponent
+    LifeCycleComponent,
+    // SimpleCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BaseUrlInterceptor,
+      multi: true
+    },
+    {
+      provide: "BASE_API_URL", useValue: environment.apiUrl
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
