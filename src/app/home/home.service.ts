@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +12,8 @@ export class HomeService {
   }
 
   public getData() {
-    return this.http.get<any>('/api/home').subscribe(config => {
-      // process the configuration.
-      console.log({ config })
-    });
+    const query = '/api/home?populate[home_how_section][populate][home_how_cards][populate][HowCardComponent][populate][0]=Image&populate[home_tech_section][populate][home_technologies][populate][0]=Image&locale[0]=es'
+    return this.http.get<any>(query)
   }
+
 }

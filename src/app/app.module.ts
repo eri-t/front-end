@@ -11,10 +11,11 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RatingComponent } from './utils/rating/rating.component';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
-// import { SimpleCardComponent } from './components/simple-card/simple-card.component';
+import { SimpleCardComponent } from './components/simple-card/simple-card.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from './app.service';
 import { environment } from 'src/environments/environment.development';
+import { ApiUrlPipe } from './api-url.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { environment } from 'src/environments/environment.development';
     NavbarComponent,
     RatingComponent,
     LifeCycleComponent,
-    // SimpleCardComponent
+    SimpleCardComponent,
+    ApiUrlPipe
   ],
   imports: [
     BrowserModule,

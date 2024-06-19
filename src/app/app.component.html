@@ -1,11 +1,24 @@
 <app-navbar></app-navbar>
 
 <div class="container">
+
+  <ng-container *ngIf="homeSections.length">
+    <section *ngFor="let section of homeSections">
+      <p>{{ section.Label }}</p>
+      <h2>{{ section.Title }}</h2>
+      <div *ngIf="section.sectionId == 'tech-section-es'">
+        <app-simple-card *ngFor="let technology of section.home_technologies" [title]="technology.Name" [image]="technology.Image"></app-simple-card>
+      </div>
+    </section>
+  </ng-container>
+
+  <!--
   <h1>{{ title | uppercase }}</h1>
 
   <p class="red">Hello world</p>
 
   <p>Two times 3 is: {{ doubleNumber(3) }}</p>
+  -->
 
   <!--
       <div class="p-bottom-1">
@@ -17,9 +30,11 @@
       </div>
       
       <app-life-cycle *ngIf="!hide" class="p-bottom-1" [text]="title"></app-life-cycle>
-      -->
-  <app-rating class="p-bottom-1" (rated)="handleRating($event)"></app-rating>
+  -->
   
+  <!--
+  <app-rating class="p-bottom-1" (rated)="handleRating($event)"></app-rating>
+
   <div class="p-bottom-1">
     <input type="file" style="display: none;" #upload>
     <button (click)="upload.click()">Upload file</button>
@@ -31,3 +46,5 @@
   <h2>Next releases</h2>
   <app-movies-list [movies]="nextMovies"></app-movies-list>
   </div>
+
+  -->

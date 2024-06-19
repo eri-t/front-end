@@ -9,9 +9,17 @@ import { HomeService } from './home/home.service';
 
 export class AppComponent implements OnInit {
   constructor(private homeService: HomeService) {}
+  
   ngOnInit(): void {
-    this.homeService.getData()
+    this.homeSections = this.homeService.getData()
+    .subscribe(
+      (response) => {
+        this.homeSections = Object.values(response)
+        console.log('this.homeSections: ',this.homeSections)
+      }
+    );
 
+    /*
     setTimeout(() => {
       this.showingMovies = [
         {
@@ -43,7 +51,11 @@ export class AppComponent implements OnInit {
         }
       ]
     }, 3000);
+    */
   }
+
+  homeSections;
+  /*
   title = 'front-end';
   showingMovies;
   nextMovies;
@@ -56,4 +68,5 @@ export class AppComponent implements OnInit {
   handleRating(rating: number): void {
     alert(rating)
   }
+  */
 }
