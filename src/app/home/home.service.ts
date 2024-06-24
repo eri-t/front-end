@@ -11,8 +11,8 @@ export class HomeService {
     // This service can now make HTTP requests via `this.http`.
   }
 
-  public getData() {
-    const query = '/api/home?populate[home_how_section][populate][home_how_cards][populate][HowCardComponent][populate][0]=Image&populate[home_tech_section][populate][home_technologies][populate][0]=Image&locale[0]=es'
+  public getData(lang: string) {
+    const query = `/api/home?populate[home_how_section][populate][home_how_cards][populate][HowCardComponent][populate][0]=Image&populate[home_tech_section][populate][home_technologies][populate][0]=Image&locale[0]=${lang}`
     return this.http.get<any>(query)
   }
 

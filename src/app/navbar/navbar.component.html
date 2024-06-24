@@ -5,4 +5,14 @@
       Angular movies
     </a>
   </h1>
+  <button mat-button [matMenuTriggerFor]="menu">
+    {{ selectedLang.name }}
+    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button *ngFor="let lang of filteredList" mat-menu-item (click)="selectLang(lang)">
+      {{ lang.name }}
+    </button>
+  </mat-menu>
+
 </mat-toolbar>

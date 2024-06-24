@@ -11,62 +11,27 @@ export class AppComponent implements OnInit {
   constructor(private homeService: HomeService) {}
   
   ngOnInit(): void {
-    this.homeSections = this.homeService.getData()
+    this.lang = 'en';
+    this.getHomeData()
+  }
+
+  lang;
+
+  homeSections;
+
+  getHomeData() {
+    // TODO: Add loader
+    this.homeSections = this.homeService.getData(this.lang)
     .subscribe(
       (response) => {
         this.homeSections = Object.values(response)
         console.log('this.homeSections: ',this.homeSections)
       }
     );
-
-    /*
-    setTimeout(() => {
-      this.showingMovies = [
-        {
-          title: 'Spider-Man',
-          launchDate: new Date(),
-          price: 1400.99
-        },
-        {
-          title: 'Moana',
-          launchDate: new Date("2016-11-14"),
-          price: 1230.99
-        }
-      ];
-      this.nextMovies = [
-        {
-          title: 'Spider-Man Far from home',
-          launchDate: new Date("2024-12-24"),
-          price: 1900.99
-        },
-        {
-          title: 'Inception',
-          launchDate: new Date("2025-8-25"),
-          price: 1800.99
-        },
-        {
-          title: 'Rocky',
-          launchDate: new Date("2025-7-12"),
-          price: 1700.99
-        }
-      ]
-    }, 3000);
-    */
   }
 
-  homeSections;
-  /*
-  title = 'front-end';
-  showingMovies;
-  nextMovies;
-  hide = false;
-
-  doubleNumber(value:number):number {
-    return value*2
+  handleLangChange(lang: Record<string, string>): void {
+    this.lang = lang.key
+    this.getHomeData()
   }
-
-  handleRating(rating: number): void {
-    alert(rating)
-  }
-  */
 }
