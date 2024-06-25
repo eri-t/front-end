@@ -4,7 +4,7 @@ import { RatingComponent } from '../utils/rating/rating.component';
 @Component({
   selector: 'app-life-cycle',
   templateUrl: './life-cycle.component.html',
-  styleUrls: ['./life-cycle.component.css']
+  styleUrls: ['./life-cycle.component.scss']
 })
 export class LifeCycleComponent implements OnInit, OnChanges, OnDestroy, DoCheck, AfterViewInit {
   @ViewChild(RatingComponent)
