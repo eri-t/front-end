@@ -1,3 +1,5 @@
-<h3>{{ title }}</h3>
-<img [src]="image.url | apiUrl" alt="">
-<p>{{ description }}</p>
+<article class="descriptive-card">
+  <img [src]="image.url | apiUrl" alt="" class="image m-right-auto">
+  <h3>{{ title }}</h3>
+  <p class="card-text">{{ description }}</p>
+  </article>

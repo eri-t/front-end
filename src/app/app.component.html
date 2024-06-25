@@ -2,18 +2,22 @@
 
 <div class="container">
   <ng-container *ngIf="homeSections.length">
-    <section *ngFor="let section of homeSections">
+    <section *ngFor="let section of homeSections" class="home-section {{section.name}}-section" [ngClass]="section.name">
       <p class="badge">{{ section.Label | uppercase }}</p>
       <h2>{{ section.Title }}</h2>
-      <div [ngSwitch]="section.name">
-        <div *ngSwitchCase="'tech'">
-          <app-simple-card *ngFor="let technology of section.home_technologies" [title]="technology.Name"
-            [image]="technology.Image"></app-simple-card>
-        </div>
-        <div *ngSwitchCase="'how'">
-          <app-descriptive-card *ngFor="let how of section.home_hows" [title]="how.Title" [image]="how.Image"
-            [description]="how.Description"></app-descriptive-card>
-        </div>
+      <div [ngSwitch]="section.name" class="section-cards-list">
+        <ul *ngSwitchCase="'how'">
+          <li *ngFor="let how of section.home_hows" class="how-card">
+            <app-descriptive-card [title]="how.Title" [image]="how.Image"
+              [description]="how.Description"></app-descriptive-card>
+          </li>
+          </ul>
+          
+          <ul *ngSwitchCase="'tech'">
+            <li *ngFor="let technology of section.home_technologies" class="tech-card">
+              <app-simple-card [title]="technology.Name" [image]="technology.Image"></app-simple-card>
+            </li>
+          </ul>
         <div *ngSwitchDefault></div>
       </div>
     </section>

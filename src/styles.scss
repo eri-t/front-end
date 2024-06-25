@@ -2,16 +2,79 @@
 
 /* html, body { height: 100%; } */
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+@use '@angular/material' as mat;
+
+$raleway-typography: mat.define-typography-config($font-family: '"Raleway", sans-serif');
+
+@include mat.typography-hierarchy($raleway-typography);
+
+$app-theme: mat.define-light-theme((
+  typography: $raleway-typography
+));
+
+@include mat.all-component-themes($app-theme);
+
+* {
+  box-sizing: border-box;
 }
 
-.container>section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+body {
+  margin: 0;
+  color: #212529;
 }
+
+.container {
+  max-width: 1140px;
+  margin: auto;
+
+  & >.home-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem .75rem;
+
+    .section-title {
+      font-size: 28px;
+      line-height: 34px;
+      font-weight: 800;
+      margin-top: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .section-cards-list > ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      font-size: 28px;
+      line-height: 34px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .tech-card {
+      padding: 3rem 1.5rem;
+      width: 190px;
+    }
+
+    .how-card {
+      border: 1px solid #B9CBFF;
+      border-radius: 16px;
+      padding: 45px 35px;
+      margin: 1rem;
+      max-width: 440px;   
+    }
+  }
+
+  .how-section{
+    h2 {
+      max-width: 600px;
+    }   
+  }
+}
+
 p {
   margin: 0;
 }
@@ -23,12 +86,31 @@ p {
 .red {
   color: red
 }
+
 ul {
   list-style-type: none;
+  padding: 0;
 }
+
+.text-center{
+  text-align: center;
+}
+
+.image {
+  display: block;
+}
+
+.m-left-auto {
+  margin-left: auto;
+}
+
+.m-right-auto {
+  margin-right: auto;
+}
+
 .badge {
   display: inline-block;
-  font-size: 75%;
+  font-size: .75rem;
   font-weight: 700;
   background-color: #E3F8F9;
   color: #45D2D4;
