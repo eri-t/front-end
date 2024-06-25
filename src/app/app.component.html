@@ -1,13 +1,21 @@
 <app-navbar [langKey]="lang" (newLangSelected)="handleLangChange($event)"></app-navbar>
 
 <div class="container">
-
   <ng-container *ngIf="homeSections.length">
     <section *ngFor="let section of homeSections">
-      <p>{{ section.Label }}</p>
+      <p class="badge">{{ section.Label | uppercase }}</p>
       <h2>{{ section.Title }}</h2>
-      <div *ngIf="section.sectionId.startsWith('tech-section')">
-        <app-simple-card *ngFor="let technology of section.home_technologies" [title]="technology.Name" [image]="technology.Image"></app-simple-card>
+      <div [ngSwitch]="section.name">
+        <div *ngSwitchCase="'tech'">
+          <app-simple-card *ngFor="let technology of section.home_technologies" [title]="technology.Name"
+            [image]="technology.Image"></app-simple-card>
+        </div>
+        <div *ngSwitchCase="'how'">
+          <app-descriptive-card *ngFor="let how of section.home_hows" [title]="how.Title" [image]="how.Image"
+            [description]="how.Description"></app-descriptive-card>
+        </div>
+        <div *ngSwitchDefault></div>
       </div>
     </section>
   </ng-container>
+</div>

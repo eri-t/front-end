@@ -16,6 +16,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from './app.service';
 import { environment } from 'src/environments/environment.development';
 import { ApiUrlPipe } from './api-url.pipe';
+import { DescriptiveCardComponent } from './components/descriptive-card/descriptive-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ApiUrlPipe } from './api-url.pipe';
     RatingComponent,
     LifeCycleComponent,
     SimpleCardComponent,
-    ApiUrlPipe
+    ApiUrlPipe,
+    DescriptiveCardComponent
   ],
   imports: [
     BrowserModule,

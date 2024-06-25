@@ -12,7 +12,7 @@ export class HomeService {
   }
 
   public getData(lang: string) {
-    const query = `/api/home?populate[home_how_section][populate][home_how_cards][populate][HowCardComponent][populate][0]=Image&populate[home_tech_section][populate][home_technologies][populate][0]=Image&locale[0]=${lang}`
+    const query = `/api/home?populate[home_how_section][populate][home_hows][populate][0]=Image&populate[home_tech_section][populate][home_technologies][populate][0]=Image&locale[0]=${lang}`
     return this.http.get<any>(query)
   }
 
