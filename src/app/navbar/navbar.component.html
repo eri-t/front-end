@@ -1,18 +1,70 @@
-<mat-toolbar color="primary">
-  <h1>
-    <a href="" mat-button>
-      <mat-icon>local_movies</mat-icon>
-      Angular movies
-    </a>
-  </h1>
-  <button mat-button [matMenuTriggerFor]="menu">
-    {{ selectedLang.name }}
-    <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button *ngFor="let lang of filteredList" mat-menu-item (click)="selectLang(lang)">
-      {{ lang.name }}
-    </button>
-  </mat-menu>
+<mat-accordion *ngIf="isMobile; else desktopNavbar" class="mobile-navbar" displayMode="flat">
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header class="main-panel-header">
+      <mat-panel-title>
+        <h1><a href="/">Title</a></h1>
+      </mat-panel-title>
+      <mat-panel-description>
+        <mat-icon iconPositionEnd>menu</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
 
-</mat-toolbar>
+    <mat-accordion *ngIf="items.length" displayMode="flat">
+      <mat-expansion-panel *ngFor="let item of items" hideToggle
+        [ngClass]="{'expansion-disabled': !item.navbar_sub_items.length}">
+
+        <mat-expansion-panel-header expandedHeight="32px">
+          <mat-panel-title>
+            {{ item.Name }}
+            <mat-icon *ngIf="item.navbar_sub_items.length" iconPositionEnd>keyboard_arrow_down</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-accordion *ngIf="item.navbar_sub_items.length" displayMode="flat">
+          <mat-expansion-panel *ngFor="let subitem of item.navbar_sub_items" hideToggle class="expansion-disabled">
+            <mat-expansion-panel-header expandedHeight="32px">
+              <mat-panel-title>
+                {{ subitem.Name }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ selectedLang.name }}
+            <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <button *ngFor="let lang of filteredList" mat-menu-item (click)="selectLang(lang)">
+          {{ lang.name }}
+        </button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-expansion-panel>
+
+</mat-accordion>
+
+<ng-template #desktopNavbar>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <h1><a href="/">Title</a></h1>
+      <span class="menu-spacer"></span>
+      <div *ngIf="items.length">
+        <a *ngFor="let item of items" href="#" mat-button>{{ item.Name }}</a>
+      </div>
+      <button mat-button [matMenuTriggerFor]="menu">
+        {{ selectedLang.name }}
+        <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button *ngFor="let lang of filteredList" mat-menu-item (click)="selectLang(lang)">
+          {{ lang.name }}
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+    </mat-toolbar>
+    </ng-template>

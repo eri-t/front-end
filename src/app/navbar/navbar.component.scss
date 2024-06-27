@@ -1,6 +1,25 @@
+/*
 mat-toolbar {
   position: sticky;
   position: -webkit-sticky;
   top: 0;
   z-index: 1000;
+}
+*/
+
+.main-panel-header {
+  .mat-expansion-panel-header-description {
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+}
+
+.mat-expanded.expansion-disabled {
+  .mat-expansion-panel-header {
+    padding-top: 16px;
+  }
+}
+
+.mat-expansion-panel {
+  box-shadow: none !important;
 }
